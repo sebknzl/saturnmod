@@ -1,4 +1,7 @@
-/* ---------------------------------------------------------------
+/* THis is a fork of seb's work to make it suitable on Master System Pal VA3 board
+ *the biggest difference is VCC for 50hz and GND  for 60hz on RA1
+ * fork by Unshe <unshe@tiscalinet.it>
+ *---------------------------------------------------------------
  * Saturn Switchless Mod PIC Code (16F630/16F676)
  * Copyright (c) 2004 Sebastian Kienzl <seb@riot.org>
  * ---------------------------------------------------------------
@@ -52,9 +55,9 @@ const char countries_JP[ COUNTRYNUM ] = {
 };
 
 const char countries_VF[ COUNTRYNUM ] = {
-	0,		// eu: 50hz
-	1,		// usa: 60hz
-	1		// japan: 60hz
+	1,		// eu: 50hz (fork)
+	0,		// usa: 60hz (fork)
+	0		// japan: 60hz (fork)
 };
 
 char countries_COL[ COUNTRYNUM ] = {
@@ -104,13 +107,13 @@ void display5060( char dunkel )
 	}
 
 	if( VF == 0 ) {
-		// 50Hz: blink once
+		// 60Hz: blink once (fork)
 		delay( 200 );
 		darkenLeds( 200 );
 	}
 	else {
 		int i;
-		// 60Hz: blink rapidly a few times
+		// 50Hz: blink rapidly a few times (fork)
 		for( i = 0; i < 3; i++ ) {
 			delay( 75 );
 			darkenLeds( 75 );
